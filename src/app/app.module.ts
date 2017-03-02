@@ -6,11 +6,16 @@ import { MaterialModule } from '@angular/material';
 import { routing } from './app-routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { MigrantsComponent } from './migrants/migrants.component';
+import { OngComponent } from './ong/ong.component';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MigrantsComponent,
+    OngComponent
   ],
   imports: [
     BrowserModule,
