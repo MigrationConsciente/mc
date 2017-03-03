@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
+import {MdSnackBar} from '@angular/material';
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +17,28 @@ public statut = ['Immigrant', 'Immigré', 'ONG', 'Entrepreneur(s)'];
 
 public pays: string = null ;
 public role: string = null ;
-  constructor(public hs: HomeService) { }
+
+  constructor(public hs: HomeService, public snackBar: MdSnackBar, public af: AngularFire) { }
 
   ngOnInit() {
   }
-  login(){
-    this.hs.login();
+
+    login(): any {
+        this.af.auth.login().then(result => {
+            this.hs.user = result;
+            console.log(this.hs.user);
+            this.hs.isLoggedIn = true;
+            
+           if (this.pays !== null && this.role !== null) {
+                   this.hs.nav(this.role);
+              }else {
+                this.snackBar.open('Vous devez remplir tout le formulaire ');
+             }
+           });
+
+  }
+
+  loginAsUser() {
+   // this.hs.login();
   }
 }

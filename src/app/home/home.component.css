@@ -8,6 +8,7 @@
   height: 100vh;
   margin : 0;
   padding : 0;
+
 }
 
 .intro {
@@ -31,4 +32,8 @@
 
 md-select {
   margin : 5px;
+}
+.already {
+  width: 100%;
+  
 }
