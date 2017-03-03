@@ -11,6 +11,8 @@ import { MigrantsComponent } from './migrants/migrants.component';
 import { OngComponent } from './ong/ong.component';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import 'hammerjs';
+import { EntrepreneursComponent } from './entrepreneurs/entrepreneurs.component';
+import { ProfilComponent } from './profil/profil.component';
 
 const myFirebaseConfig = {
   apiKey: 'AIzaSyBFazJOlB4p_6abYGo3G663WQ0i8wExKZU',
@@ -31,7 +33,9 @@ const myFirebaseAuthConfig = {
     AppComponent,
     HomeComponent,
     MigrantsComponent,
-    OngComponent
+    OngComponent,
+    EntrepreneursComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

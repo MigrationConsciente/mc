@@ -13,7 +13,7 @@ public countries = ['Benin', 'Burkina Faso', 'Cape Vert',
                     'Cote d\'Ivoire', 'Gambie', 'Ghana', 'Guinea', 'Guinée-Bissau',
                     'Liberia', 'Mali',	'Niger', 'Nigeria', 'Sénégal', 'Sierra Leone', 
                     'Togo', 'Cameroon'];
-public statut = ['Immigrant', 'Immigré', 'ONG', 'Entrepreneur(s)'];
+public statut = ['Migrant', 'ONG', 'Entrepreneur(s)'];
 
 public pays: string = null ;
 public role: string = null ;
@@ -26,11 +26,13 @@ public role: string = null ;
     login(): any {
         this.af.auth.login().then(result => {
             this.hs.user = result;
-            console.log(this.hs.user);
+            this.hs.pays = this.pays;
+            this.hs.role = this.role;
+            console.log(this.hs.user + ' pays' + this.hs.pays + ' role' + this.hs.role);
             this.hs.isLoggedIn = true;
-            
-           if (this.pays !== null && this.role !== null) {
-                   this.hs.nav(this.role);
+
+            if (this.pays !== null && this.role !== null) {
+                this.hs.nav(this.role);
               }else {
                 this.snackBar.open('Vous devez remplir tout le formulaire ');
              }

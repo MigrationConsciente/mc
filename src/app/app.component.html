@@ -5,7 +5,13 @@
      </md-toolbar>
   <div class="content">
     <router-outlet></router-outlet>
-    <button class="float" md-fab color="warn"><md-icon>add_alert</md-icon></button>
+    <button class="float" md-fab color="warn" [mdMenuTriggerFor]="menu">
+      <md-icon>add_alert</md-icon>
+    </button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item (click)="goToProfil()" >Mon Profil</button>
+    <button md-menu-item >Signaler une urgence</button>
+  </md-menu>
   </div>
 
 

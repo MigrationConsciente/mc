@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 export class HomeService {
  public user;
  public isLoggedIn: Boolean = false;
+ public role: String;
+ public pays: String;
 
     constructor(public af: AngularFire, public router: Router) { }
       logout() {
@@ -13,12 +15,12 @@ export class HomeService {
     }
 
     nav(role) {
-        if (role === 'Immigrant') {
+        if (role === 'Migrant') {
             this.router.navigate(['/migrant']);
         }else if (role === 'ONG'){
             this.router.navigate(['/ong']);
         }else if (role === 'Entrepreneur(s)') {
-            // TODO : Creer composant Entrepreneur
+            this.router.navigate(['/entrepreneurs']);
         }else {
             console.log('Impossible de naviguer à cette adresse. Avez vous modifiéé le formulaire ?')
         }
