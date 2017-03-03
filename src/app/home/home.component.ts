@@ -26,6 +26,7 @@ public role: string = null ;
     login(): any {
         this.af.auth.login().then(result => {
             this.hs.user = result;
+            this.hs.uid = result.auth.uid;
             this.hs.pays = this.pays;
             this.hs.role = this.role;
             console.log(this.hs.user + ' pays' + this.hs.pays + ' role' + this.hs.role);
