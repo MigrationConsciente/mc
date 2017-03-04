@@ -9,9 +9,9 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-public countries = ['Benin', 'Burkina Faso', 'Cape Vert', 
+public countries = ['Benin', 'Burkina Faso', 'Cape Vert',
                     'Cote d\'Ivoire', 'Gambie', 'Ghana', 'Guinea', 'Guinée-Bissau',
-                    'Liberia', 'Mali',	'Niger', 'Nigeria', 'Sénégal', 'Sierra Leone', 
+                    'Liberia', 'Mali',	'Niger', 'Nigeria', 'Sénégal', 'Sierra Leone',
                     'Togo', 'Cameroon'];
 public statut = ['Migrant', 'ONG', 'Entrepreneur(s)'];
 
