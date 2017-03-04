@@ -35,7 +35,7 @@ public role: string = null ;
             if (this.pays !== null && this.role !== null) {
                 this.hs.nav(this.role);
               }else {
-                this.snackBar.open('Vous devez remplir tout le formulaire ');
+                this.snackBar.open(' Vous devez remplir tout le formulaire ');
              }
            });
 

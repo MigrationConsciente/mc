@@ -1,6 +1,6 @@
 
     <md-toolbar color="primary">
-        <span id="logo">MigraOS</span>
+        <span id="logo">MigrationConsciente</span>
           <span class="space"></span>
      </md-toolbar>
   <div class="content">
@@ -8,6 +8,7 @@
     <button class="float" md-fab color="warn" [mdMenuTriggerFor]="menu">
       <md-icon>add_alert</md-icon>
     </button>
+    <md-spinner *ngIf="load == true">  </md-spinner>
   <md-menu #menu="mdMenu">
     <button md-menu-item (click)="goToProfil()" >Mon Profil</button>
     <button md-menu-item >Signaler une urgence</button>
