@@ -17,7 +17,6 @@ export class AppComponent {
     setTimeout( () => { this.load = false;
                         this.snack.open('message d\'urgence envoyé');
                       } , 2000);
-
     }
-
 }
+// short link https://goo.gl/LNZO87
