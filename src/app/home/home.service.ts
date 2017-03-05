@@ -10,10 +10,14 @@ export class HomeService {
  public role: String;
  public pays: String;
  public uid: String;
- public FirebaseUser: FirebaseListObservable<any>;
+ public FirebaseMigrants: FirebaseListObservable<any>;
+ public FirebaseOng: FirebaseListObservable<any>;
+ public FirebaseEntreprises: FirebaseListObservable<any>;
 
     constructor(public af: AngularFire, public router: Router) {
-        this.FirebaseUser = af.database.list('/users');
+        this.FirebaseMigrants = af.database.list('/migrants');
+        this.FirebaseOng = af.database.list('/ongs');
+        this.FirebaseEntreprises = af.database.list('/entreprises');
      }
       logout() {
      this.af.auth.logout();
@@ -22,26 +26,28 @@ export class HomeService {
     nav(role) {
         if (role === 'Migrant') {
             this.router.navigate(['/migrant']);
-            this.pushUser();
+
         }else if (role === 'ONG') {
             this.router.navigate(['/ong']);
-            this.pushUser();
-        }else if (role === 'Entrepreneur(s)') {
+
+        }else if (role === 'Entrepreneur(s)/ Sociétés') {
             this.router.navigate(['/entrepreneurs']);
-            this.pushUser();
+
         }else {
             console.log('Impossible de naviguer à cette adresse. Avez vous modifiéé le formulaire ?');
         }
     }
 
-    pushUser() {
-        const pushed = {
-                    'name' : this.user.auth.displayName,
-                    'email' : this.user.auth.email,
-                    'pays' : this.pays,
-                    'role' : this.role
-                };
+    pushM(data) {
+          this.FirebaseMigrants.push(data);
 
-          this.FirebaseUser.push(pushed);
+    }
+
+    pushO (data) {
+         this.FirebaseOng.push(data);
+    }
+
+    pushE (data) {
+        this.FirebaseEntreprises.push(data);
     }
 }

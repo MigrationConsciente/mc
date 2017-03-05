@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router';
+import { InfodetailComponent } from './infodetail/infodetail.component';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
 
+  infodetail() {
+    this.router.navigate(['/detailone']);
+  }
+
+  infodetailtwo() {
+    this.router.navigate(['/detailtwo']);
+  }
 }

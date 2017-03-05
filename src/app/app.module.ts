@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 import { routing } from './app-routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -14,6 +15,11 @@ import 'hammerjs';
 import { EntrepreneursComponent } from './entrepreneurs/entrepreneurs.component';
 import { ProfilComponent } from './profil/profil.component';
 import { InfoComponent } from './migrants/info/info.component';
+import { InfodetailComponent } from './migrants/info/infodetail/infodetail.component';
+import { InfodetailtwoComponent } from './migrants/info/infodetailtwo/infodetailtwo.component';
+import { OpportunitesComponent } from './migrants/opportunites/opportunites.component';
+import { CarteComponent } from './migrants/carte/carte.component';
+import { ForumComponent } from './forum/forum.component';
 
 const myFirebaseConfig = {
   apiKey: 'AIzaSyBFazJOlB4p_6abYGo3G663WQ0i8wExKZU',
@@ -37,7 +43,12 @@ const myFirebaseAuthConfig = {
     OngComponent,
     EntrepreneursComponent,
     ProfilComponent,
-    InfoComponent
+    InfoComponent,
+    InfodetailComponent,
+    InfodetailtwoComponent,
+    OpportunitesComponent,
+    CarteComponent,
+    ForumComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +56,10 @@ const myFirebaseAuthConfig = {
     HttpModule,
     MaterialModule,
     routing,
-    AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig)
+    AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCe7_NRTQo75BMt7b18MP6zE_g6k9W3OtU'
+    })
   ],
   providers: [
     HomeService

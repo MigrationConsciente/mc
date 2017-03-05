@@ -13,10 +13,22 @@ public countries = ['Benin', 'Burkina Faso', 'Cape Vert',
                     'Cote d\'Ivoire', 'Gambie', 'Ghana', 'Guinea', 'Guinée-Bissau',
                     'Liberia', 'Mali',	'Niger', 'Nigeria', 'Sénégal', 'Sierra Leone',
                     'Togo', 'Cameroon'];
-public statut = ['Migrant', 'ONG', 'Entrepreneur(s)'];
+public statut = ['Migrant', 'ONG', 'Entrepreneur(s)/ Sociétés'];
 
+public domaineEnt = ['Agriculure', 'Elevage', 'Batiment', 'TIC', 'Autres' ];
+
+public destination = ['France', 'Italie', 'Espagne', 'Allemagne', 'Autres'];
+public trancheAge = [ 'Entre 14 et 18 ans', 'Entre 18 et 28 ans', 'Entre 28 et 40 ans', '40 et plus'];
 public pays: string = null ;
 public role: string = null ;
+public dest: string = null;
+public age: string = null;
+public doesNeedFacebook: Boolean = false;
+public ongName: String = '';
+public ongPays: String = '';
+public nomEntreprise: String = '';
+public domEnt: String  = '';
+
 
   constructor(public hs: HomeService, public snackBar: MdSnackBar, public af: AngularFire) { }
 
@@ -24,20 +36,42 @@ public role: string = null ;
   }
 
     login(): any {
-        this.af.auth.login().then(result => {
-            this.hs.user = result;
-            this.hs.uid = result.auth.uid;
-            this.hs.pays = this.pays;
-            this.hs.role = this.role;
-            console.log(this.hs.user + ' pays' + this.hs.pays + ' role' + this.hs.role);
-            this.hs.isLoggedIn = true;
+//      if ( this.doesNeedFacebook === true ) { this.af.auth.login(); }
 
-            if (this.pays !== null && this.role !== null) {
+            if (this.role === 'Migrant') {
+
+                const migrantData = {
+                  'nationalité': this.pays,
+                  'destination ': this.dest,
+                  'trancheAge' : this.age
+                };
+                // Push to firebase
+                this.hs.pushM(migrantData);
+
+
+                this.hs.nav(this.role);
+              }else if (this.role === 'ONG') {
+                const ongData = {
+                  'nom' : this.ongName,
+                  'paysPrésents' : this.ongPays
+                };
+                this.hs.pushO(ongData);
+
+                this.hs.nav(this.role);
+
+              }else if (this.role === 'Entrepreneur(s)/ Sociétés') {
+                const sociétéData = {
+                  'nom' : this.nomEntreprise,
+                  'domaine' : this.domEnt
+                };
+
+                this.hs.pushE(sociétéData);
+
                 this.hs.nav(this.role);
               }else {
-                this.snackBar.open(' Vous devez remplir tout le formulaire ');
-             }
-           });
+              this.snackBar.open('Veuillez répondre aux questions SVP');
+          }
+
 
   }
 

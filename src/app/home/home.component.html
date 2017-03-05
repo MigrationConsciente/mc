@@ -5,7 +5,7 @@
   et de gestion des urgences des migrants issus d' Afrique de l'Ouest
     </p>
 
-    <form>
+    
         <md-card>
             <h4 style="text-align :center;">S'inscrire</h4>
 
@@ -15,17 +15,55 @@
                 {{stat}}
                 </md-option>
             </md-select><br>
-            <md-select class="marg" placeholder="Votre Pays" [(ngModel)]="pays" name="pays">
-                <md-option *ngFor="let c of countries" [value]="c">
-                {{c}}
+               
+                <md-select *ngIf="role === 'Migrant'" class="marg" placeholder="Votre Nationalité" [(ngModel)]="pays" name="pays">
+                    <md-option *ngFor="let c of countries" [value]="c">
+                    {{c}}
+                    </md-option>
+                </md-select><br>
+                <md-select *ngIf="role === 'Migrant'" class="marg" placeholder="Ou allez vous?" [(ngModel)]="dest" name="destination">
+                    <md-option *ngFor="let d of destination" [value]="d">
+                    {{d}}
+                    </md-option>
+                </md-select><br>
+                <md-select *ngIf="role === 'Migrant'" class="marg" placeholder="Donnez votre age" [(ngModel)]="age" name="destination">
+                    <md-option *ngFor="let a of trancheAge" [value]="a">
+                    {{a}}
+                    </md-option>
+                </md-select><br>
+                <p *ngIf="role === 'Migrant'">
+                     <md-checkbox  class="example-margin" [(ngModel)]="doesNeedFacebook">Utiliser vos données Facebook</md-checkbox>
+                </p>
+            
+          <div *ngIf="role === 'ONG'">
+                <md-input-container class="full-width">
+                    <input mdInput placeholder="Nom de votre organisation " [(ngModel)]="ongName" >
+                </md-input-container><br>
+                <md-input-container class="full-width">
+                    <input mdInput placeholder="Dans quels pays etes vous? (separer par des virgules)" [(ngModel)]="ongPays" >
+                </md-input-container><br>
+                  Utiliser vos données Facebook
+                <md-checkbox  class="example-margin" [(ngModel)]="doesNeedFacebook">Utiliser vos données Facebook</md-checkbox>
+            </div>
+
+
+          <div *ngIf="role === 'Entrepreneur(s)/ Sociétés'">
+            <md-input-container class="full-width">
+                <input mdInput placeholder="Nom de l'entreprise'" [(ngModel)]="nomEntreprise" >
+            </md-input-container><br>
+            <md-select class="marg" placeholder="Domaine" [(ngModel)]="domEnt" name="Domaine">
+                <md-option *ngFor="let e of domaineEnt" [value]="e">
+                    {{e}}
                 </md-option>
             </md-select><br>
+            
+                <md-checkbox  class="example-margin" [(ngModel)]="doesNeedFacebook">Utiliser vos données Facebook</md-checkbox>
+          </div>
 
 
             <!-- add select of ngif for every  -->
-        <button md-raised-button color="primary" (click)="login()"> Me connecter avec Facebook </button>
+        <button md-raised-button color="primary" (click)="login()"> Me connecter </button>
         <hr>
-        <button md-raised-button color="accent"> Rester Anonyme</button>
         </md-card>
-    </form>
+    
 </div>

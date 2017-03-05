@@ -19,4 +19,4 @@ export class AppComponent {
                       } , 2000);
     }
 }
-// short link https://goo.gl/LNZO87
+// short link https://goo.gl/3t6szU
